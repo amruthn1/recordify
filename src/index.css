@@ -1,0 +1,44 @@
+#loading {
+    text-align: center;
+    margin-top: 200px;
+}
+#start{
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+#stop{
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+#title{
+    text-align: center;
+    margin-top: 20px;
+}
+#outputtext{
+    text-align: center;
+}
+#vidplay{
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+#audiotext{
+    text-align: center;
+}
+#audiotoggle{
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+#downloadcontainer{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+#githublogo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
