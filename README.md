@@ -2,7 +2,7 @@
  
 Recordify is a client based screen recording application that runs on the React framework. It utilizes a WASM + JS format of FFmpeg to do all of the processing that would usually be offloaded to an external server.
 
-URL: recordify.surge.sh
+Beta Version Avaliable At: recordify.surge.sh
 
 Features:
   - Supports screen, video, and audio recording, all of which can be mixed on the website and exported as a .webm file
