@@ -17,5 +17,3 @@ In Progress:
   - Allow user to choose which mics and cameras they wish to use
 
 
-Bugs:
-  - When using more than one mic (headphones plugged in along with system mic), Recordify doesn't properly detect the external mic
