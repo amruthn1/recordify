@@ -30,11 +30,17 @@ async function initffmpeg(){
             <button id = "stop">Stop</button>
             <br></br>
             <div id = "audiotogglecontainer">
-                <input id="audiotoggle" type="checkbox"/>
-                <h6 id = "audiotext">Audio</h6>
+            <label class="switch">
+                <input type="checkbox" id = "audiotoggle"/>
+                <span class="slider round"></span>
+            </label>
+            <h6 id = "audiotext">Audio</h6>
             </div>
             <div id = "videotogglecontainer">
-                <input id="videotoggle" type="checkbox"/>
+            <label class="switch">
+                <input type="checkbox" id = "videotoggle"/>
+                <span class="slider round"></span>
+            </label>
                 <h6 id = "videotext">Video</h6>
             </div>
             <div id = "output">
@@ -89,7 +95,7 @@ async function initffmpeg(){
                 async function b(){
                     ffmpeg.FS("writeFile", "newinput.webm", await fetchFile(outputdata))
                     ffmpeg.FS("writeFile", "overlay.webm", await fetchFile(videoBlob))
-                    await ffmpeg.run("-i", "newinput.webm", "-i", "overlay.webm", "-filter_complex", "[0:v][1:v]overlay=25:25", "-shortest", "-pix_fmt", "yuv420p", "-c:a", "copy", "finaloutput.webm")
+                    await ffmpeg.run("-i", "newinput.webm", "-i", "overlay.webm", "-filter_complex", "[0:v][1:v]overlay=25:25", "-shortest", "-pix_fmt", "yuv420p", "-preset", "fast", "-c:a", "copy", "finaloutput.webm")
                     setTimeout(c, 500)
                     async function c(){
                         outputdatawithcam = ffmpeg.FS("readFile", "finaloutput.webm")
@@ -158,7 +164,7 @@ async function initffmpeg(){
             }
             document.getElementById('stop').disabled = true
             document.getElementById('start').disabled = false
-        } //here
+        }
         const video = document.querySelector("video");
         startRecording()
         async function startRecording() {
@@ -177,7 +183,7 @@ async function initffmpeg(){
                 });
                 const options = {mimeType: 'video/webm'}
                 videorecorder = new MediaRecorder(videostream, options)
-                videorecorder.start()
+                //videorecorder.start()
                 const camerachunks = []
                 videorecorder.ondataavailable = g => camerachunks.push(g.data)
                 videorecorder.onstop = g => {
@@ -190,7 +196,7 @@ async function initffmpeg(){
                 audio:true
             })
             audiorecorder = new MediaRecorder(audiostream, {mimeType: 'audio/webm'})
-            audiorecorder.start()
+            //audiorecorder.start()
             const audiochunks = [];
             audiorecorder.ondataavailable = f => audiochunks.push(f.data)
             audiorecorder.onstop = f => {
@@ -213,7 +219,7 @@ async function initffmpeg(){
                 async function b(){
                     ffmpeg.FS("writeFile", "newinput.webm", await fetchFile(outputdata))
                     ffmpeg.FS("writeFile", "overlay.webm", await fetchFile(videoBlob))
-                    await ffmpeg.run("-i", "newinput.webm", "-i", "overlay.webm", "-filter_complex", "[0:v][1:v]overlay=25:25", "-shortest", "-pix_fmt", "yuv420p", "-c:a", "copy", "finaloutput.webm")
+                    await ffmpeg.run("-i", "newinput.webm", "-i", "overlay.webm", "-filter_complex", "[0:v][1:v]overlay=25:25", "-shortest", "-pix_fmt", "yuv420p", "-preset", "fast", "-c:a", "copy", "finaloutput.webm")
                     setTimeout(c, 500)
                     async function c(){
                         outputdatawithcam = ffmpeg.FS("readFile", "finaloutput.webm")
@@ -298,6 +304,12 @@ async function initffmpeg(){
             }
         };
         recorder.start();
+        if (audio){
+            audiorecorder.start()
         } 
+        if (chosevideo){
+            videorecorder.start()
+        }
+}        
 }
 }
