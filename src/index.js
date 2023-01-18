@@ -6,6 +6,7 @@ import loadinggif from '../src/assets/Ajax-Preloader.gif'
 import gearicon from '../src/assets/gearicon.png'
 import crossicon from '../src/assets/cross.png'
 import { createRoot } from 'react-dom/client'
+
 const container = document.getElementById('root')
 const root = createRoot(container)
 const d = new Date()
